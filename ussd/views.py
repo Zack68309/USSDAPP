@@ -15,11 +15,11 @@ def ussd(request):
             return JsonResponse({'error': 'Invalid JSON'}, status=400)
 
         # Extract necessary USSD fields from the request
-        ussd_id = data.get('USERID', '')
-        msisdn = data.get('MSISDN', '')
-        user_data = data.get('USERDATA', '')
-        msgtype = data.get('MSGTYPE', True)  # True if first request, False if subsequent
-        session_id = data.get('SESSIONID', '')  # Extract session ID from the incoming request
+        ussd_id = data.get('USERID')
+        msisdn = data.get('MSISDN')
+        user_data = data.get('USERDATA')
+        msgtype = data.get('MSGTYPE')  # True if first request, False if subsequent
+        session_id = data.get('SESSIONID')  # Extract session ID from the incoming request
 
         if not session_id:
             return JsonResponse({'error': 'SESSIONID is missing'}, status=400)
